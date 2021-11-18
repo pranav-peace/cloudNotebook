@@ -12,7 +12,7 @@ export const Notes = () => {
   
   const ref = useRef(null);
   const refClose = useRef(null);
-  const [note, setNote] = useState({id: "", title: "", description: "", tag: ""});
+  const [note, setNote] = useState({id: "", etitle: "", edescription: "", etag: ""});
 
   const updateNote = (currentNote) => {
     ref.current.click();
@@ -22,7 +22,6 @@ export const Notes = () => {
   const handleClick = (event) => {
       event.preventDefault();
       refClose.current.click();
-      console.log("Updating the note...", note);
       editNote(note.id, note.etitle, note.edescription, note.etag);
   }
   const onChange = (event) => {
@@ -116,7 +115,7 @@ export const Notes = () => {
               >
                 Close
               </button>
-              <button type="button" className="btn btn-primary" onClick={handleClick}> 
+              <button disabled={note.etitle.length<5 || note.edescription.length<5}  type="button" className="btn btn-primary" onClick={handleClick}> 
                 Update Note
               </button>
             </div>
