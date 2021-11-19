@@ -9,6 +9,9 @@ const fetchUser = require('../middleware/fetchUser.js')
 //Secret String for JWT token signature
 const SECRET_STRING = 'This_is_my_secret_string';
 
+//This shows in the console if we successfully logged in
+let success = false;
+
 // ROUTE 1: POST Creating user at /api/auth/createuser, no login required
 router.post('/createuser', [
     body('name', /*error message =>*/ 'Enter a valid name').isLength({ min: 3 }),
@@ -44,17 +47,17 @@ router.post('/createuser', [
           id: user.id 
         }
       }
+      
+      success = true;
+
       const authtoken = jwt.sign(data, SECRET_STRING);
 
-      res.json({authtoken});
+      res.json({success, authtoken});
 
     } catch(error){
       console.error(error.message);
       res.status(500).send("Some error occured");
     }
-    //   .then(user => res.json(user))
-    //   .catch(err=>{console.log(err) 
-    //     res.json({error: "Please enter a unique value for email"})})
 })
 
 //ROUTE 2: POST Authenticate a user at /api/auth/login, login required
@@ -64,21 +67,21 @@ router.post('/login', [
 ], async (req, res) => {
   const errors = validationResult(req); 
   if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
+    return res.status(400).json({errors: errors.array() });
   }
 
   const {email, password} = req.body;
   try {
-    // Check is user exists
+    // Check if user exists
     let user = await User.findOne({email});
     if(!user){
-      return res.status(500).json({error: "Please enter valid login credentials"});
+      return res.status(500).json({success, error: "Please enter valid login credentials"});
     }
 
     // Check if password is correct
     let passwordCompare = await bcrypt.compare(password, user.password);
     if(!passwordCompare){
-      return res.status(500).json({error: "Please enter valid login credentials"});
+      return res.status(500).json({success, error: "Please enter valid login credentials"});
     }
 
     // Sending the response if authenticated
@@ -87,9 +90,12 @@ router.post('/login', [
         id: user.id 
       }
     }
+
+    success = true;
+
     const authtoken = jwt.sign(data, SECRET_STRING);
 
-    res.json({authtoken});
+    res.json({success, authtoken});
     
   } catch (error) {
     console.error(error.message);

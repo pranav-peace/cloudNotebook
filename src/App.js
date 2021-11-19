@@ -6,6 +6,8 @@ import { Navbar } from "./Components/Navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NoteState from "./Context/Notes/noteState";
 import { Alert } from "./Components/Alert";
+import SignUp from "./Components/SignUp";
+import Login from "./Components/Login";
 
 function App() {
   return (
@@ -21,6 +23,12 @@ function App() {
               </Route>
               <Route exact path="/about">
                 <About />
+              </Route>
+              <Route exact path="/login">
+                <Login />
+              </Route>
+              <Route exact path="/signup">
+                <SignUp />
               </Route>
             </Switch>
           </div>
