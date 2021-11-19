@@ -17,6 +17,7 @@ export const AddNote = () => {
     return (
       <>
         <form>
+          <div className="d-flex justify-content-center"><h3>Add a New Note</h3></div>
           <div className="mb-3">
             <label htmlFor="title" className="form-label">Title</label>
             <input type="text" className="form-control" id="title" name="title" value={note.title} aria-describedby="emailHelp" onChange={onChange}/>

@@ -123,6 +123,7 @@ export const Notes = () => {
         </div>
       </div>
 
+      <div className="d-flex justify-content-center"><h4>Notes</h4></div>
       <div className="row my-3">
         {notes.map((note) => {
           return (
