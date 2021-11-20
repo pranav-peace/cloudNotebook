@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router';
 
-const Login = () => {
+const Login = (props) => {
     const [credentials, setCredentials] = useState({email: "", password: ""});
     let history = useHistory();
     const handleClick = async (event) => {
@@ -18,8 +18,9 @@ const Login = () => {
           if(json.success){
                 localStorage.setItem('token', json.authtoken);
                 history.push('/');
+                props.showAlert("Logged in Successfullly", "success");
           } else{
-                alert("Please enter valid credentials!")
+                props.showAlert("Please enter valid credentials", "danger");
           }
     }
     const onChange = (event) => {

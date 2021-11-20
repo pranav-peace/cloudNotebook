@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import noteContext from "../Context/Notes/noteContext";
 import NoteItem from "./NoteItem";
 
-export const Notes = () => {
+export const Notes = (props) => {
   const context = useContext(noteContext);
   const { notes, getAllNotes, editNote } = context;
   
@@ -23,6 +23,7 @@ export const Notes = () => {
       event.preventDefault();
       refClose.current.click();
       editNote(note.id, note.etitle, note.edescription, note.etag);
+      props.showAlert("Note Updated Successfully", "success");
   }
   const onChange = (event) => {
       setNote({...note, [event.target.name]: event.target.value});

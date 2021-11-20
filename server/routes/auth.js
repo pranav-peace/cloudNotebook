@@ -9,10 +9,9 @@ const fetchUser = require('../middleware/fetchUser.js')
 //Secret String for JWT token signature
 const SECRET_STRING = 'This_is_my_secret_string';
 
-//This shows in the console if we successfully logged in
-let success = false;
-
 // ROUTE 1: POST Creating user at /api/auth/createuser, no login required
+  //This shows in the console if we successfully logged in
+  let success = false;
 router.post('/createuser', [
     body('name', /*error message =>*/ 'Enter a valid name').isLength({ min: 3 }),
     body('email', 'Enter a valid email').isEmail(),
@@ -61,6 +60,8 @@ router.post('/createuser', [
 })
 
 //ROUTE 2: POST Authenticate a user at /api/auth/login, login required
+  //This shows in the console if we successfully logged in
+  success = false;
 router.post('/login', [
   body('email', 'Enter a valid email').isEmail(),
   body('password', 'Password cannot be blank').exists(),

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router';
 
-const SignUp = () => {
+const SignUp = (props) => {
     const [credentials, setCredentials] = useState({name: "", email: "", password: ""});
     let history = useHistory();
     const handleClick = async (event) => {
@@ -18,8 +18,9 @@ const SignUp = () => {
           if(json.success){
                 localStorage.setItem('token', json.authtoken);
                 history.push('/');
+                props.showAlert("Logged in Successfullly", "success");
           } else{
-                alert("User with this email already exists!")
+                props.showAlert("Please enter valid credentials", "danger");
           }
     }
     const onChange = (event) => {
