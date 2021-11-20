@@ -27,7 +27,7 @@ router.post('/createuser', [
       //Check whether the user with this email ID already exists
       let user = await User.findOne({email: req.body.email})
       if(user){
-          return res.status(400).json({error: "User with this email already exists!"})
+          return res.status(400).json({success, error: "User with this email already exists!"})
       }
 
       // Generating secure password
