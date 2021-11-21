@@ -1,5 +1,5 @@
 import NoteContext from './noteContext';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 const NoteState = (props) => {
   const host = "http://localhost:5000/";
@@ -13,7 +13,7 @@ const NoteState = (props) => {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjE2ODA3YWIzZmI5MTgyM2MzOWJlNmM4In0sImlhdCI6MTYzNDQ2NjcyOX0.v92goK322MDabkNwHh80SypbKrZ53FewKDQaqQcpxAg',
+        'auth-token': localStorage.getItem('token'),
       },
     });
     const json = await response.json();
@@ -27,7 +27,7 @@ const NoteState = (props) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjE2ODA3YWIzZmI5MTgyM2MzOWJlNmM4In0sImlhdCI6MTYzNDQ2NjcyOX0.v92goK322MDabkNwHh80SypbKrZ53FewKDQaqQcpxAg',
+        'auth-token': localStorage.getItem('token'),
       },
       body: JSON.stringify({title, description, tag})
     });
@@ -42,7 +42,7 @@ const NoteState = (props) => {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
-        'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjE2ODA3YWIzZmI5MTgyM2MzOWJlNmM4In0sImlhdCI6MTYzNDQ2NjcyOX0.v92goK322MDabkNwHh80SypbKrZ53FewKDQaqQcpxAg',
+        'auth-token': localStorage.getItem('token'),
       }
     });
     const json = response.json();
@@ -56,7 +56,7 @@ const NoteState = (props) => {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjE2ODA3YWIzZmI5MTgyM2MzOWJlNmM4In0sImlhdCI6MTYzNDQ2NjcyOX0.v92goK322MDabkNwHh80SypbKrZ53FewKDQaqQcpxAg',
+        'auth-token': localStorage.getItem('token'),
       },
       body: JSON.stringify({title, description, tag})
     });

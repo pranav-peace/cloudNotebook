@@ -28,6 +28,7 @@ const SignUp = (props) => {
     }
     return (
         <div className="container">
+            <h3>Sign Up to Continue</h3>
             <form onSubmit={handleClick}>
                 <div className="form-group my-3">
                     <label htmlFor="exampleInputEmail1">Name</label>
