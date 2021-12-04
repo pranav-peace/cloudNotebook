@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
 import noteContext from "../Context/Notes/noteContext";
 
 const NoteItem = (props) => {
@@ -17,12 +16,6 @@ const NoteItem = (props) => {
           </div>
           {/* <h6 className="card-subtitle mb-2 text-muted">{note.}</h6> //Subtitle line will probably use later for some*/}
           <p className="card-text">{note.description}</p>
-          <Link to="/" className="card-link">
-            Card link
-          </Link>
-          <Link to="/" className="card-link">
-            Another link
-          </Link>
         </div>
       </div>
     </div>
