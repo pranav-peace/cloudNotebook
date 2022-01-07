@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
-const mongoURI = "mongodb://localhost:27017/iNotebook?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false";
+const mongoURI = "mongodb+srv://cloud_notebook_admin:JEE9vQCcgH7FEnfN@cloudnotebook-database.oqbzq.mongodb.net/cloudNotebook_database?retryWrites=true&w=majority";
 
 const connectToMongo = () => {
-    mongoose.connect(mongoURI, ()=>{
+    mongoose.connect(mongoURI,{ useNewUrlParser: true, useUnifiedTopology: true },
+        ()=>{
         console.log("Connected to Mongo Successfully");
-    })
+    });
 }
 
 module.exports = connectToMongo;

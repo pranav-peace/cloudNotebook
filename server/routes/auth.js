@@ -1,11 +1,11 @@
 const express = require('express');
-const router = express.Router();
 const User = require("../models/User");
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const fetchUser = require('../middleware/fetchUser.js')
 
+const router = express.Router();
 //Secret String for JWT token signature
 const SECRET_STRING = 'This_is_my_secret_string';
 
@@ -24,7 +24,7 @@ router.post('/createuser', [
     }
     try{
       //Check whether the user with this email ID already exists
-      let user = await User.findOne({email: req.body.email})
+      let user = await User.findOne({email: req.body.email});
       if(user){
           return res.status(400).json({success, error: "User with this email already exists!"})
       }

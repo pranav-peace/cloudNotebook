@@ -28,7 +28,7 @@ const Login = (props) => {
     }
     return (
         <div>
-            <h3>Login to Continue</h3>
+            <h3>Welcome Back!</h3>
             <form onSubmit={handleClick}>
                 <div className="form-group my-3">
                     <label htmlFor="exampleInputEmail1">Email address</label>

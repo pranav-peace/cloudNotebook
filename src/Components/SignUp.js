@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { useHistory } from 'react-router';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const SignUp = (props) => {
     const [credentials, setCredentials] = useState({name: "", email: "", password: ""});
