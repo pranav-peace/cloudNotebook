@@ -6,7 +6,7 @@ const Login = (props) => {
     let history = useHistory();
     const handleClick = async (event) => {
         event.preventDefault();
-        const response = await fetch("http://localhost:5000/api/auth/login", {
+        const response = await fetch("https://cloud-notebook.herokuapp.com/api/auth/login", {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
